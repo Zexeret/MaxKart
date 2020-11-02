@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+         {% for cus in customers %}
+        <tr>
+            <td>{{cus.cname}}</td>
+            <td>{{cus.cnumber}}</td>
+            <td>{{cus.cemail}}</td>
+            <td>{{cus.caddress}}</td>
+            <td>
+                <a href="/edit/{{cus.id}}">EDIT</a>
+                <a href="/delete/{{cus.id}}">Delete</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    
+
+</body>
+</html>
