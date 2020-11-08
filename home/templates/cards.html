@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+
+<body>
+
+    <!-- NAVBAR Starts Here -->
+    <nav class="navbar">
+        <div class="logo">
+            <h2>MaxKart</h2>
+            <h1>M.K</h1>
+        </div>
+        <a href="/#home">Back to Home</a>
+        <a href="/#service">Services</a>
+
+        <button>ORDERS</button>
+    </nav>
+    <!-- Navbar Ends Here -->
+
+    <!-- CONTAINER SECTION -->
+
+    <div class="card-container">
+
+
+
+        <div class="headstyle">
+            <h1>{{chead}}</h1>
+            <h2>{{chead}}</h2>
+        </div>
+
+
+        <div class="card-box">
+
+            <div class="card-types">
+                <!-- <h2>Types</h2> -->
+                <div class="type-btn">
+                    {% for type,typeid in types.items %}
+                    <a href="#{{typeid}}"><button>{{type}}</button></a>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div class="card-options">
+
+                <ul>
+
+                    {% for card in carddetails %}
+                    <form action="/" method="" style="width: 100%;margin: 15px 0px; background: transparent;">
+                        {% csrf_token %}
+                        <input type="text" name="price" value="{{card.price}}" hidden="">
+                        <input type="number" name="type" value="{{card.type}}" hidden="">
+                        <button type="submit"
+                            style="width: 100%;background: transparent; font-family: 'Poppins'; border :none; cursor:pointer;"
+                            id="{{card.card_id}}">
+                            <li class="card-item-container">
+                                <div class="card-item">
+                                    <div class="cntbx">
+                                        <div class="price">
+                                            <h2>₹ {{card.price}}</h2>
+                                        </div>
+                                        <div class="heading">
+                                            <h3>{{card.heading}}</h3>
+                                            <p>{{card.time}} min</p>
+                                        </div>
+                                        <hr style="width: 88%;margin-bottom: 7px;border-color: #ffffff60;">
+                                        <div class="details">
+                                            <ul>
+                                                
+                                                {% for line in card.descaslist %}
+                                                <li>{{line}}</li>
+                                                {% endfor %}
+                                            
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </button>
+                    </form>
+
+                    {% endfor %}
+
+
+
+
+
+
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- CONTAINER SECTION ENDS-->
+
+
+
+
+
+
+
+
+    <footer class="def-footer">
+        &copy; 2020-2040 by <span style="color: rgb(221, 0, 0);"> &nbsp;MaxKart&nbsp; </span> Coorporation. All rights
+        reserved
+    </footer>
+
+</body>
+
+</html>

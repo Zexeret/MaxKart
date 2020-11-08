@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: black;
+    box-sizing: border-box;
+    /* font-family: "Raleway", sans-serif; */
+    /* font-family: "Open Sans", sans-serif; */
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+a{
+    text-decoration: none;
+}
+
+ul, li{
+    list-style: none;
+    /* width: 100%; */
+}
+
+
+/* Navigation */
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* border: 2px solid white; */
+    background: rgba(0, 0, 0, 0.85);
+    width: 100vw;
+    height: 57.5px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+.navbar button{
+    position: absolute;
+    right: 14%;
+    width: 142px;
+    height: 37px;
+    background: rgb(209, 0, 42);
+    color: white;
+    border: none;
+    /* border-radius: 15px; */
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Poppins';
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 0.2px;
+}
+
+.navbar button:focus{
+    border: none;
+    outline: none;
+}
+.navbar button:active{
+    background-color: rgb(184, 0, 37);
+}
+
+.navbar .logo{
+    position: absolute;
+    left: 15%;
+    color: white;
+    font-size: 0.9rem;
+    cursor: default;
+}
+.logo h2{
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    position: relative;
+    top: 0px;
+    transition: all 0.5s ease-in-out;
+}
+.logo h1{
+    position: absolute;
+    font-size: 2.4rem;
+    font-weight: 500;
+    top: -8px;
+    left: 18px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.logo:hover h1{
+    opacity: 1;
+}
+
+.logo:hover h2{
+    top: 8px;
+    opacity: 0;
+}
+
+
+.navbar a{
+    position: relative;
+    left: 10%;
+     margin: 0px 3px; 
+    padding: 18px 22px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.navbar a:hover{
+    background: rgb(209, 0, 42);
+}
+/* END - Navigation bar */
+
+
+/* CONTAINER SECTION STARTS HERE */
+
+.card-container{
+    position: relative;
+    min-height: 100vh;
+    /* padding-top: 60px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container::before{
+    content: '';
+    background: url('/static/img/landing_page/home.jpg') no-repeat center center/cover;
+    /* background-position: center -40px; */
+    /* background-size: cover; */
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+
+.card-container .card-box{
+    
+position: relative;
+    
+top: 25px;
+    
+/* border: 2px solid white; */
+    
+display: grid;
+    
+grid-template-columns: 2fr 3fr;
+    
+gap: 30px 30px;
+    
+width: 75%;
+    
+/* margin-top: 25px; */
+}
+
+.card-container .card-box .card-types{
+    
+position: relative;
+    
+/* border: 2px solid white; */
+    
+color: white;
+    
+display: flex;
+    
+flex-direction: column;
+    
+align-items: center;
+    
+justify-content: center;
+}
+.card-container .card-box .card-types h2{
+    
+margin: 16px 0px;
+    
+font-size: 2rem;
+    
+font-weight: 600;
+    
+text-shadow: 1px 1px 3px white;
+}
+.card-container .card-box .card-types .type-btn{
+    
+display: flex;
+    
+flex-direction: column;
+    
+width: 47%;
+}
+
+
+.type-btn button{
+    
+width: 100%;
+    
+margin: 5px 0;
+    
+height: 45px;
+    
+background: transparent;
+    
+border: 2px solid white;
+    
+color: white;
+    
+font-size: 1.1rem;
+    
+font-family: 'Poppins', sans-serif;
+    
+font-weight: 400;
+    
+cursor: pointer;
+    
+border-radius: 7px;
+    
+/* box-shadow: 0 0 5px white; */
+    
+transition: all 0.3s ease-in-out;
+    }
+    .type-btn button:hover{
+        
+        background:rgb(209, 0, 42) ;
+        border: 2px solid rgb(209, 0, 42);
+    
+    }
+
+.card-container .card-box .card-options{
+    
+position: relative;
+/* border: 2px solid white; */
+max-height: 527px;
+overflow: scroll;
+background: #ffffff45;
+scrollbar-width: 100%;
+scroll-behavior: smooth;
+}
+
+.card-container .card-box .card-options .card-item-container{
+    
+/* border: 2px solid white; */   
+width: 100%;  
+color: #f0f0f0;   
+box-shadow: 0 0 15px 0px #000000b8;   
+background: #f6000021;
+
+}
+
+
+
+.card-container .card-box .card-options .card-item{
+    
+padding: 15px;
+}
+.card-container .card-box .card-options > ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 10%;
+}
+.card-item .cntbx{
+    
+display: flex;
+    
+flex-direction: column;
+    
+align-items: center;
+}
+
+
+.price h2{
+    
+font-size: 3.6rem;
+    
+font-weight: 500;
+}
+.card-item .cntbx .heading{
+    
+width: 75%;
+    
+margin-bottom: 15px;
+}
+.card-item .cntbx .heading h3{
+    
+font-size: 1.7rem;
+
+}
+.card-item .cntbx .heading p{
+    
+font-size: 0.9rem;
+    
+font-weight: 300;
+}
+.card-item .cntbx .details{
+    
+/* list-style: circle; */
+   text-align : left ;
+width: 75%;
+}
+.card-item .cntbx .details li{
+    
+list-style: disc;
+    
+font-size: .9rem;
+    
+font-weight: 400;
+    
+letter-spacing: 0.7px;
+}
+
+
+
+
+
+
+
+/* CONTAINER SECTION ENDS HERE */
+
+
+
+
+
+
+
+
+
+/* FOOTER ###################################################################################################################################### */
+
+.def-footer{
+    position: relative;
+    bottom: 0px;
+    width: 100vw;
+    height: 10vh;
+    background: rgb(0 0 0 / 0.90);
+    color: white;
+    display: flex;
+    /* text-align: center; */
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* FOOTER END ################################################################################################################################## */
+
+
+/* UTILITIES SECTION */
+
+.headstyle{
+
+position: relative;
+
+top: 7px;
+
+min-width: 130px;
+
+display: flex;
+
+justify-content: center;
+
+height: 100px;
+
+margin-top: 45px;
+}
+    
+.headstyle h1{
+        
+position: absolute;
+        
+top: 0;
+        
+color: #ffffff2a;
+        
+font-size: 4rem;
+        
+font-weight: 700;
+        
+letter-spacing: 0px;
+        
+white-space: nowrap;
+        
+text-transform: uppercase;
+}
+    
+.headstyle h2{
+        position: absolute;
+        top: 33%;
+        font-size: 2.4rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        color: white;
+}
+/* UTILITIES SECTION END */

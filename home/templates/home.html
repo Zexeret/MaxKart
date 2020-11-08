@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<body>
+
+
+    <!-- NAVBAR Starts Here -->
+    <nav class="navbar">
+        <div class="logo">
+            <h2>MaxKart</h2>
+            <h1>M.K</h1>
+        </div>
+        <a href="#home">Home</a>
+        <a href="#service">Services</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+        <button>Login</button>
+    </nav>
+    <!-- Navbar Ends Here -->
+
+    <!-- HOME Section starts here -->
+    <div id="home">
+        <div class="cntbx">
+            <h2>Welcome to MAXKART</h2>
+            <p>Now let your all day to day worries be ours, just sit back and enjoy our expert's premium service</p>
+            <a href="#service"><button>GET STARTED</button></a>
+        </div>
+    </div>
+    <!-- HOME Section ends here -->
+
+
+    <!-- SERVICE Section starts here -->
+    <div id="service">
+        <div class="headstyle">
+            <h1>SERVICES</h1>
+            <h2>Services</h2>
+        </div>
+        <div class="servicebx">
+
+            {% for service in services %}
+            <div class="card">
+                <form action="/card" method="POST" style="width: 100%; height: 100%;">
+                    {% csrf_token %}
+                    <input type="number" name="sid" value="{{service.id}}" readonly="readonly" hidden="">
+                <button type="submit" >
+                    <div class="cntbx">
+                        <img src="/media/{{service.service_icon}}" alt="">
+                        <h2>{{service.service_heading}}</h2>
+                        <p>{{service.service_desc}}</p>
+                    </div>
+                </button>
+            </form>
+            </div>
+            
+
+            {% endfor %}
+
+        </div>
+    </div>
+    <!-- SERVICE Section ends here -->
+
+
+    <!-- ABOUT Section starts here -->
+    <div id="about">
+        <div class="headstyle">
+            <h1>ABOUT US</h1>
+            <h2>About Us</h2>
+        </div>
+        <div class="container">
+            <div class="content">
+                <div class="textbx">
+                    <h3>We, at Maxkart, believes in providing customers the ease they never imagined !!!</h3>
+                    <p><em>
+                            "Why Fikr, when MAXKART is here"
+                        </em>
+                    </p>
+                    <ul>
+                        <li><i class="fa fa-play"></i> Services for almost all your daily problems.</li>
+                        <li><i class="fa fa-play"></i> We provide on-door solutions for your every problems.</li>
+                        <li><i class="fa fa-play"></i> Specially tested workers and expert so that you can focus on other works rather than our experts.</li>
+                        <li><i class="fa fa-play"></i>Daily checkup and sanitization of workers.</li>
+                    </ul>
+                    <p>
+                       MaxKart provides you solution for all your daily needs, from haircutting to plumbing, from cleaning your bathroom to
+                       fixing your bulbs, from waxing to bride-ready make-ups, all yoour problems one simple solution...MAXKART.
+                    </p>
+                </div>
+                <div class="imgbx">
+                    <img src="{% static 'img/landing_page/about.jpeg' %}" alt="">
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="card">
+                    <div class="cntbx">
+                        <i class="fa fa-address-card-o"></i>
+                        <h3>Our Address</h3>
+                        <p>Neville House, J.N. Heredia Marg, Ballard Estate, Mumbai-400 038, India.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="cntbx">
+                        <i class="fa fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>maxkarthelp@mxkart.com</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="cntbx">
+                        <i class="fa fa-phone"></i>
+                        <h3>Call Us</h3>
+                        <p>+91 8847965978</p>
+                        <p>+91 9739604784</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- ABOUT Section ends here -->
+
+
+    <!-- CONTACT Section starts here -->
+    <div id="contact">
+        <div class="headstyle">
+            <h1>CONTACT US</h1>
+            <h2>Contact Us</h2>
+        </div>
+
+        <form action="/" method="post">
+            {% csrf_token %}
+            <div class="contact-input">
+                <img id="culogo" src="{% static 'img/landing_page/user-logo.png' %}" alt="">
+                <input type="text" name="cname" placeholder="Full Name" required>
+            </div>
+            <div class="contact-input">
+                <img id="cuemail" src="{% static 'img/landing_page/user-email.png' %}" alt="">
+                <input type="email" name="cemail"  placeholder="Your Email" required>
+            </div>
+            <textarea name="ctext"  cols="30" rows="10"
+                placeholder="Enter your Query or Reason to Contact. We will Contact you as soon as possible." required></textarea>
+            <div>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+    <!-- CONTACT Section ends here -->
+
+
+
+    <footer class="def-footer">
+        &copy; 2020-2040 by <span style="color: rgb(221, 0, 0);"> &nbsp;MaxKart&nbsp; </span> Coorporation. All rights
+        reserved
+    </footer>
+
+
+    <script type="text/javascript">
+
+        let status = "{{statuscontact}}" ;
+        console.log(status) ;
+
+        if(status === "success") swal({
+                                title: "Success",
+                                text: "Your message has been sent. We will look into it as soon as possible!",
+                                icon: "success",
+                                button: "Thanks :)",
+});
+        
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+     SERVICE Section starts here 
+    <div id="service">
+        <div class="headstyle">
+            <h1>SERVICES</h1>
+            <h2>Services</h2>
+        </div>
+        <div class="servicebx">
+
+            <div class="card">
+                <a href="/card">
+                    <div class="cntbx">
+                        <img src="./img/services/Haircut/main.png" alt="">
+                        <h2>Hair Cutting</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/Salon/main.png" alt="">
+                        <h2>Salon</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/Painter/main.png" alt="">
+                        <h2>Painters</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/Plumbing/main.png" alt="">
+                        <h2>Plumbers</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/Carpenter/main.png" alt="">
+                        <h2>Carpenters</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/HouseCleaning/main.png" alt="">
+                        <h2>House Cleaning</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/Pesticide/main.png" alt="">
+                        <h2>Pest Control</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="card">
+                <a href="#home">
+                    <div class="cntbx">
+                        <img src="./img/services/Electrician/main.png" alt="">
+                        <h2>Electricians</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, itaque.</p>
+                    </div>
+                </a>
+            </div>
+            
+
+
+
+
+        </div>
+    </div>
+    SERVICE Section ends here    -->
