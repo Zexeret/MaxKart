@@ -3,7 +3,7 @@ An application for your all day to day needs and services.
 
 
 
-## How to Setup
+## _How to Setup_
 
 #### 1. Fork this repository.
 #### 2. Clone it in your DEVICE.
