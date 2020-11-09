@@ -1,5 +1,5 @@
 # MaxKart
-A Service Provider application 
+An application for your all day to day needs and services.  
 
 
 
@@ -15,7 +15,7 @@ git remote add upstream https://github.com/Zexeret/MaxKart.git
 git remote -v        [To check your connections]
 ```
 
-#####  - For updating your local repo with original repo
+   - For updating your local repo with original repo
  ```
 git fetch upstream
 git checkout master
