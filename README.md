@@ -18,8 +18,8 @@ git remote -v        [To check your connections]
    >- For updating your local repo with original repo
  ```
 git fetch upstream
-git checkout master
-git merge upstream/master
+git checkout main
+git merge upstream/main
  ```
 
 #### 4. Setting up models in your device
@@ -31,7 +31,6 @@ python manage.py makemigrations
 
 python manage.py migrate
 
-python manage.py createsuperuser
 ```
 
 
