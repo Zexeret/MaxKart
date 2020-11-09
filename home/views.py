@@ -1,4 +1,5 @@
 from django.shortcuts import render ,redirect
+from collections import OrderedDict
 from .models import ContactUs
 from .models import Service
 from .models import Haircut
@@ -10,9 +11,7 @@ def home(req):
     params = {'statuscontact' : "off" ,'services' : allserv}
 
     if(req.method == "POST"):
-
         try:
-
             # print(req.POST)
             # print(b[0].email) ;
 
@@ -39,7 +38,7 @@ def card(req):
         chead = Service.objects.get(id = id).card_heading
 
         service = {3 : Haircut}
-        alltype = service[int(id)].objects.all()
+        alltype = service[int(id)].objects.all().order_by('type' , '-card_id' ,'price')
 
         types = service[int(id)].objects.all().values('type').distinct()
         typeid = service[int(id)].objects.all().values('type_id').distinct()
@@ -48,11 +47,15 @@ def card(req):
         for i in range(len(types)):
             stypes[types[i]['type']] = typeid[i]['type_id']
 
+        stypes = OrderedDict(sorted(stypes.items()))
 
         params = {'chead' : chead , 'types' : stypes , 'carddetails' : alltype}
-        print(params)
+        # print(params)
         return render(req, "cards.html" , params)
 
     else:
         return redirect("/")
 
+
+def order(req):
+    return render(req, "orders.html")

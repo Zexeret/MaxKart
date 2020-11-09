@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORDERS</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+
+
+<body>
+
+    <!-- NAVBAR Starts Here -->
+    <nav class="navbar">
+        <div class="logo">
+            <h2>MaxKart</h2>
+            <h1>M.K</h1>
+        </div>
+        <a href="/#home">Back to Home</a>
+        <a href="/#service">Add more Services</a>
+
+        <button>BOOK</button>
+    </nav>
+    <!-- Navbar Ends Here -->
+    <div class="finalsummary">
+        <h2>Appointment Summaries</h2>
+        <hr style="
+    position: relative;
+    width: 100%;
+    bottom: 15%;
+">
+        <p>Total no.of Services: &nbsp;&nbsp; 67 </p>
+        <p>Total Amount:&nbsp;&nbsp; ₹ 345234</p>
+        <button>Book your Appointments</button>
+    </div>
+
+    <div class="container">
+        <table class="styled-table">
+            <thead style="position: sticky;">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Service</th>
+                    <th>Type</th>
+                    <th class="pr">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Dom</td>
+                    <td>Mens Haircu</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr >
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Harry</td>
+                    <td>Mens Haircuts</td>
+                    <td>479</td>
+                </tr>
+
+                <!-- and so on... -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text">
+            <h3>Total Amount</h3>
+            <p>345</p>
+    </div>
+
+
+
+    <script>
+        let box = document.querySelector('.styled-table');
+        let width = box.offsetWidth;
+        let price = document.querySelector('.pr');
+        let w = price.offsetWidth;
+
+        console.log(w) ;
+
+        let heading = document.querySelector('.text h3');
+        heading.style.width = width -w + "px" ;
+        let tprice = document.querySelector('.text p');
+        tprice.style.width = w + 6+  "px" ;
+
+        let topX =document.querySelector('.styled-table').getBoundingClientRect().top ;
+        let fsum = document.querySelector('.finalsummary');
+        fsum.style.top = topX + 'px' ;
+
+    </script>
+</body>
+
+</html>

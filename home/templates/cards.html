@@ -8,6 +8,7 @@
 </head>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/card.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body>
 
@@ -53,7 +54,7 @@
                 <ul>
 
                     {% for card in carddetails %}
-                    <form action="/" method="" style="width: 100%;margin: 15px 0px; background: transparent;">
+                    <form action="/order" method="" style="width: 100%;margin: 15px 0px; background: transparent;">
                         {% csrf_token %}
                         <input type="text" name="price" value="{{card.price}}" hidden="">
                         <input type="number" name="type" value="{{card.type}}" hidden="">
@@ -68,7 +69,7 @@
                                         </div>
                                         <div class="heading">
                                             <h3>{{card.heading}}</h3>
-                                            <p>{{card.time}} min</p>
+                                            <p><i class="fa fa-clock-o"></i> {{card.time}} min</p>
                                         </div>
                                         <hr style="width: 88%;margin-bottom: 7px;border-color: #ffffff60;">
                                         <div class="details">
