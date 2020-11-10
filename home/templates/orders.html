@@ -8,9 +8,10 @@
 </head>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/order.css' %}">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<body onbeforeunload="return loadorder()">
+<body>
 
     <!-- NAVBAR Starts Here -->
     <nav class="navbar">
@@ -44,16 +45,19 @@
                     <th>Service</th>
                     <th>Type</th>
                     <th class="pr">Price</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {% for order in allorders %}
                 <tr>
-                    <td>{{order.id}}</td>
+                    <td>{{forloop.counter}}</td>
                     <td>{{order.service}}</td>
                     <td>{{order.type}}</td>
                     <td>Rs. {{order.price}}</td>
+                    <td><button onclick="deleterow(this.id)" class="delete" id="{{order.id}}">X</button></td>
                 </tr>
+
                 {% endfor %}
 
                 <!-- and so on... -->
@@ -62,8 +66,8 @@
     </div>
 
     <div class="text">
-            <h3>Total Amount</h3>
-            <p>Rs. {{tprice}}</p>
+        <h3>Total Amount</h3>
+        <p>Rs. {{tprice}}</p>
     </div>
 
 
@@ -74,21 +78,63 @@
         let price = document.querySelector('.pr');
         let w = price.offsetWidth;
 
-        console.log(w) ;
+
 
         let heading = document.querySelector('.text h3');
-        heading.style.width = width -w + "px" ;
+        heading.style.width = width - w + "px";
         let tprice = document.querySelector('.text p');
-        tprice.style.width = w + 6+  "px" ;
+        tprice.style.width = w + 6 + "px";
 
-        let topX =document.querySelector('.styled-table').getBoundingClientRect().top ;
+        let topX = document.querySelector('.styled-table').getBoundingClientRect().top;
         let fsum = document.querySelector('.finalsummary');
-        fsum.style.top = topX + 'px' ;
+        fsum.style.top = topX + 'px';
+
+        async function deleterow(e) {
+
+            await swal({
+                title: "Are you sure?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((value) => {
+
+                if (value == true) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) //Here we need to check OK response and last state of ajax call.
+                        {
+                            // console.log(e) ;
+                            window.location.href = '/order'
+                            // window.location.reload() // To refresh page.    
+                        }
+                    };
+                    xhttp.open("GET", "/deleterow?orderid=" + e, true);
+                    xhttp.send();
+                }
+            });
+            // .then((willDelete) => {
+            //     if (willDelete) {
+            //         swal("Poof! Your imaginary file has been deleted!", {
+            //             icon: "success",
+            //         });
+            //     } else {
+            //         swal("Your imaginary file is safe!");
+            //     }
+            // });
 
 
-        function loadorder(){
-            window.location.replace("http://localhost:8000/order");
+
+
+
         }
+
+
+
+
+
+
+
 
     </script>
 </body>

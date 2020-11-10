@@ -10,5 +10,6 @@ urlpatterns = [
     path('card', views.card),
     path('order', views.order),
     path('updateorder', views.updateorder),
+    path('deleterow', views.deleterow),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

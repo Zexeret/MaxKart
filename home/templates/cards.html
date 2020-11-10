@@ -21,7 +21,7 @@
         <a href="/#home">Back to Home</a>
         <a href="/#service">Services</a>
 
-    <button onclick="window.location.href='/order'">Your ORDERS <div class="norder">{{norders}}</div></button>
+        <button onclick="window.location.href='/order'">Your ORDERS <div class="norder">{{norders}}</div></button>
     </nav>
     <!-- Navbar Ends Here -->
 
@@ -52,7 +52,8 @@
                 <ul>
 
                     {% for card in carddetails %}
-                    <form action="/updateorder" method="POST" style="width: 100%;margin: 15px 0px; background: transparent;">
+                    <form action="/updateorder" method="POST"
+                        style="width: 100%;margin: 15px 0px; background: transparent;">
                         {% csrf_token %}
                         <input type="number" name="price" value="{{card.price}}" hidden="">
                         <input type="text" name="type" value="{{card.type}}" hidden="">
@@ -73,11 +74,11 @@
                                         <hr style="width: 88%;margin-bottom: 7px;border-color: #ffffff60;">
                                         <div class="details">
                                             <ul>
-                                                
+
                                                 {% for line in card.descaslist %}
                                                 <li>{{line}}</li>
                                                 {% endfor %}
-                                            
+
 
                                             </ul>
                                         </div>
@@ -102,17 +103,7 @@
         </div>
     </div>
 
-
-
-
-
     <!-- CONTAINER SECTION ENDS-->
-
-
-
-
-
-
 
 
     <footer class="def-footer">
@@ -120,6 +111,11 @@
         reserved
     </footer>
 
+    <script>
+
+
+
+    </script>
 
 
 </body>

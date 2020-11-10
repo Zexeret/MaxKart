@@ -64,7 +64,7 @@ def order(req):
 
     allorders = CurrentOrder.objects.all()
     tprice = CurrentOrder.objects.aggregate(Sum('price'))['price__sum']
-    print(len(allorders))
+    # print(len(allorders))
     params = {'allorders' : allorders , "no_of_orders" : len(allorders) , "tprice" :tprice }
 
     return render(req, "orders.html" , params)
@@ -73,11 +73,24 @@ def order(req):
 def updateorder(req):
 
     if (req.method == 'POST'):
+
         CurrentOrder.objects.create(
             service=req.POST.get('service'),
             type=req.POST.get('type'),
             price=int(req.POST.get('price')),
         )
-        print("IT WORKED!!!")
+
 
     return redirect('/order')
+
+def deleterow(req):
+
+    id = req.GET.get('orderid')
+    try:
+        CurrentOrder.objects.filter(id=id).delete()
+
+    except Exception as e:
+        print(e)
+        print("IT Didnt worked")
+
+    return redirect('/')

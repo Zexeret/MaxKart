@@ -11,8 +11,9 @@ class ContactUs(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class CurrentOrder(models.Model):
-    id = models.AutoField
     service = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     price = models.IntegerField()
@@ -22,6 +23,7 @@ class CurrentOrder(models.Model):
 
     def __str__(self):
         return str(self.id)
+
 
 
 
