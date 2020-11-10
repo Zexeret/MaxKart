@@ -71,12 +71,28 @@ ul, li{
     background-color: rgb(184, 0, 37);
 }
 
+.norder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: #444343;
+    font-weight: 800;
+    background: #ffffff;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    right: -10px;
+    top: 20px;
+    font-size: 0.9rem; 
+}
+
 .navbar .logo{
     position: absolute;
     left: 15%;
     color: white;
     font-size: 0.9rem;
-    cursor: default;
+    cursor: pointer;
 }
 .logo h2{
     font-size: 1.7rem;

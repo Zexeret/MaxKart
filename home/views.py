@@ -1,8 +1,10 @@
 from django.shortcuts import render ,redirect
 from collections import OrderedDict
+from django.db.models import Sum
 from .models import ContactUs
 from .models import Service
 from .models import Haircut
+from .models import CurrentOrder
 
 
 def home(req):
@@ -49,7 +51,8 @@ def card(req):
 
         stypes = OrderedDict(sorted(stypes.items()))
 
-        params = {'chead' : chead , 'types' : stypes , 'carddetails' : alltype}
+        len(CurrentOrder.objects.all())
+        params = {'chead' : chead , 'types' : stypes , 'carddetails' : alltype , 'norders' : len(CurrentOrder.objects.all())}
         # print(params)
         return render(req, "cards.html" , params)
 
@@ -58,4 +61,23 @@ def card(req):
 
 
 def order(req):
-    return render(req, "orders.html")
+
+    allorders = CurrentOrder.objects.all()
+    tprice = CurrentOrder.objects.aggregate(Sum('price'))['price__sum']
+    print(len(allorders))
+    params = {'allorders' : allorders , "no_of_orders" : len(allorders) , "tprice" :tprice }
+
+    return render(req, "orders.html" , params)
+
+
+def updateorder(req):
+
+    if (req.method == 'POST'):
+        CurrentOrder.objects.create(
+            service=req.POST.get('service'),
+            type=req.POST.get('type'),
+            price=int(req.POST.get('price')),
+        )
+        print("IT WORKED!!!")
+
+    return redirect('/order')

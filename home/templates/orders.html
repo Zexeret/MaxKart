@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="{% static 'css/order.css' %}">
 
 
-<body>
+<body onbeforeunload="return loadorder()">
 
     <!-- NAVBAR Starts Here -->
     <nav class="navbar">
-        <div class="logo">
+        <div onclick="window.location.href= '/'" class="logo">
             <h2>MaxKart</h2>
             <h1>M.K</h1>
         </div>
@@ -31,8 +31,8 @@
     width: 100%;
     bottom: 15%;
 ">
-        <p>Total no.of Services: &nbsp;&nbsp; 67 </p>
-        <p>Total Amount:&nbsp;&nbsp; ₹ 345234</p>
+        <p>Total no.of Services: &nbsp;&nbsp; {{no_of_orders}}</p>
+        <p>Total Amount:&nbsp;&nbsp; ₹ {{tprice}}</p>
         <button>Book your Appointments</button>
     </div>
 
@@ -47,132 +47,14 @@
                 </tr>
             </thead>
             <tbody>
+                {% for order in allorders %}
                 <tr>
-                    <td>1</td>
-                    <td>Dom</td>
-                    <td>Mens Haircu</td>
-                    <td>6000</td>
+                    <td>{{order.id}}</td>
+                    <td>{{order.service}}</td>
+                    <td>{{order.type}}</td>
+                    <td>Rs. {{order.price}}</td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr >
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Harry</td>
-                    <td>Mens Haircuts</td>
-                    <td>479</td>
-                </tr>
+                {% endfor %}
 
                 <!-- and so on... -->
             </tbody>
@@ -181,7 +63,7 @@
 
     <div class="text">
             <h3>Total Amount</h3>
-            <p>345</p>
+            <p>Rs. {{tprice}}</p>
     </div>
 
 
@@ -202,6 +84,11 @@
         let topX =document.querySelector('.styled-table').getBoundingClientRect().top ;
         let fsum = document.querySelector('.finalsummary');
         fsum.style.top = topX + 'px' ;
+
+
+        function loadorder(){
+            window.location.replace("http://localhost:8000/order");
+        }
 
     </script>
 </body>

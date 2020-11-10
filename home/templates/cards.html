@@ -14,22 +14,20 @@
 
     <!-- NAVBAR Starts Here -->
     <nav class="navbar">
-        <div class="logo">
+        <div onclick="window.location.href= '/'" class="logo">
             <h2>MaxKart</h2>
             <h1>M.K</h1>
         </div>
         <a href="/#home">Back to Home</a>
         <a href="/#service">Services</a>
 
-        <button>ORDERS</button>
+    <button onclick="window.location.href='/order'">Your ORDERS <div class="norder">{{norders}}</div></button>
     </nav>
     <!-- Navbar Ends Here -->
 
     <!-- CONTAINER SECTION -->
 
     <div class="card-container">
-
-
 
         <div class="headstyle">
             <h1>{{chead}}</h1>
@@ -54,10 +52,11 @@
                 <ul>
 
                     {% for card in carddetails %}
-                    <form action="/order" method="" style="width: 100%;margin: 15px 0px; background: transparent;">
+                    <form action="/updateorder" method="POST" style="width: 100%;margin: 15px 0px; background: transparent;">
                         {% csrf_token %}
-                        <input type="text" name="price" value="{{card.price}}" hidden="">
-                        <input type="number" name="type" value="{{card.type}}" hidden="">
+                        <input type="number" name="price" value="{{card.price}}" hidden="">
+                        <input type="text" name="type" value="{{card.type}}" hidden="">
+                        <input type="text" name="service" value="{{chead}}" hidden="">
                         <button type="submit"
                             style="width: 100%;background: transparent; font-family: 'Poppins'; border :none; cursor:pointer;"
                             id="{{card.card_id}}">
@@ -120,6 +119,8 @@
         &copy; 2020-2040 by <span style="color: rgb(221, 0, 0);"> &nbsp;MaxKart&nbsp; </span> Coorporation. All rights
         reserved
     </footer>
+
+
 
 </body>
 
