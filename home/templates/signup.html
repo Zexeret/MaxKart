@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+   <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    <!-- NAVBAR Starts Here -->
+    <nav class="navbar">
+        <div onclick="window.location.href= '/'" class="logo">
+            <h2>MaxKart</h2>
+            <h1>M.K</h1>
+        </div>
+        <a href="/#home">Back to Home</a>
+        <a href="/#service">Services</a>
+
+        <button onclick="window.location.href='/login'">Login</button>
+    </nav>
+    <!-- Navbar Ends Here -->
+    <section>
+        <div class="imgbx">
+            <img src="{% static 'img/login/1.jpg' %}" alt="">
+
+        </div>
+        <div class="contentbx">
+
+            <div class="formbx">
+
+                <h2>SignUp</h2>
+
+                <form action="/handleSignup" method="post" id="SIGNUP">
+                    {%csrf_token%}
+
+                    <div class="inputbx">
+                        <span>Username</span>
+                        <input type="text" required name="username" id="username">
+                    </div>
+
+
+                    <div class="inputbx">
+                        <span>FirstName</span>
+                        <input type="text" required name="fname" id="fname">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>LastName</span>
+                        <input type="text" name="lname" id="lname">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>Email</span>
+                        <input type="email" required name="email" id="email">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>Phone </span>
+                        <input type="tel" required name="phone" id="phone">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>Address</span>
+                        <input type="text" required name="address" id="address">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>City</span>
+                        <input type="text" required name="city" id="city">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>State</span>
+                        <input type="text" required name="state" id="state">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>Pin Code</span>
+                        <input type="text" required name="pin" id="pin">
+                    </div>
+
+
+                    <div class="inputbx">
+                        <span>Password</span>
+                        <input type="password" required name="pass1" id="pass1">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>Confirm Password</span>
+                        <input type="password" required name="pass2" id="pass2">
+                    </div>
+
+                    <div class="inputbx">
+                        <input type="submit"  value="Create Account">
+                    </div>
+
+                    <div class="inputbx">
+                        <p>Already have an account? <a href="/login">Login</a></p>
+                    </div>
+
+
+                </form>
+                <hr>
+
+            </div>
+        </div>
+
+    </section>
+</body>
+<script>
+
+
+
+</script>
+
+</html>

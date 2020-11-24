@@ -21,7 +21,7 @@
         <a href="/#home">Back to Home</a>
         <a href="/#service">Services</a>
 
-        <button onclick="window.location.href='/order'">Your ORDERS <div class="norder">{{norders}}</div></button>
+        <button onclick="window.location.href='/order'">Your Orders <div class="norder">{{norders}}</div></button>
     </nav>
     <!-- Navbar Ends Here -->
 
@@ -56,7 +56,7 @@
                         style="width: 100%;margin: 15px 0px; background: transparent;">
                         {% csrf_token %}
                         <input type="number" name="price" value="{{card.price}}" hidden="">
-                        <input type="text" name="type" value="{{card.type}}" hidden="">
+                        <input type="text" name="type" value="{{card.heading}}" hidden="">
                         <input type="text" name="service" value="{{chead}}" hidden="">
                         <button type="submit"
                             style="width: 100%;background: transparent; font-family: 'Poppins'; border :none; cursor:pointer;"

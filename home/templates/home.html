@@ -24,7 +24,14 @@
         <a href="#service">Services</a>
         <a href="#about">About Us</a>
         <a href="#contact">Contact Us</a>
-        <button>Login</button>
+        {% if user.is_authenticated %}
+        <button onclick="window.location.href='/logout'">Logout</button>
+        <button onclick="window.location.href='/order'">Your Orders <div class="norder">{{norders}}</div></button>
+
+        {%else%}
+        <button onclick="window.location.href='/login'">Login</button>
+        <button onclick="window.location.href='/signup'">SignUp</button>
+        {%endif%}
     </nav>
     <!-- Navbar Ends Here -->
 
@@ -49,9 +56,9 @@
 
             {% for service in services %}
             <div class="card">
-                <form action="/card" method="POST" style="width: 100%; height: 100%;">
+                <form action="/card/{{service.id}}" method="POST" style="width: 100%; height: 100%;">
                     {% csrf_token %}
-                    <input type="number" name="sid" value="{{service.id}}" readonly="readonly" hidden="">
+                    <!-- <input type="number" name="sid" value="{{service.id}}" readonly="readonly" hidden=""> -->
                     <button type="submit" style="font-family: 'Poppins';">
                         <div class="cntbx">
                             <img src="/media/{{service.service_icon}}" alt="">
@@ -175,7 +182,8 @@
 
         let status = "{{statuscontact}}";
         console.log(status);
-
+        let require_login="{{require_login}}";
+        let nice="{{nice}}";
         if (status === "success") swal({
             title: "Success",
             text: "Your message has been sent. We will look into it as soon as possible!",
@@ -184,7 +192,52 @@
         }).then((value) => {
             window.location.replace("http://localhost:8000/");
         });
-
+        let ok ="{{ok}}";
+        console.log(ok);
+        let logouts="{{logouts}}";
+        if(ok === "True")swal({
+            title:"Success",
+            text:"Your Account Has Been Created successfully",
+            icon: "success",
+        }).then((value) => {
+            window.location.replace("http://localhost:8000/");
+        });
+        let login_credentials ="{{login_credentials}}";
+        if(login_credentials === "True")swal({
+            title:"Success",
+            text:"Successfully logged in",
+            icon: "success",
+        }).then((value) => {
+            window.location.replace("http://localhost:8000/");
+        });
+        if(login_credentials === "False" )swal({
+            title:"Failed",
+            text:"Invalid Credentials, Try Again",
+            icon: "error",
+        }).then((value) => {
+            window.location.replace("http://localhost:8000/");
+        });
+        if(logouts === "True" )swal({
+            title:"Success",
+            text:"Successfully Logged Out",
+            icon: "success",
+        }).then((value) => {
+            window.location.replace("http://localhost:8000/");
+        });
+        if(require_login === "True" )swal({
+            title:"Required Login",
+            text:"Please Login First",
+            icon: "warning",
+        }).then((value) => {
+            window.location.replace("http://localhost:8000/login");
+        });
+        if(nice === "True" )swal({
+            title:"Restricted Operation",
+            text:"You are already logged in, Please Logout First",
+            icon: "warning",
+        }).then((value) => {
+            window.location.replace("http://localhost:8000/");
+        });
     </script>
 
 </body>

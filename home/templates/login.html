@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR Starts Here -->
+    <nav class="navbar">
+        <div onclick="window.location.href= '/'" class="logo">
+            <h2>MaxKart</h2>
+            <h1>M.K</h1>
+        </div>
+        <a href="/#home">Back to Home</a>
+        <a href="/#service">Services</a>
+
+        <button onclick="window.location.href='/signup'">Signup</button>
+    </nav>
+    <!-- Navbar Ends Here -->
+
+
+    <section>
+        <div class="imgbx">
+            <img src="{% static 'img/login/1.jpg' %}" alt="">
+
+        </div>
+        <div class="contentbx">
+
+            <div class="formbx">
+
+                <h2>Login</h2>
+
+                <form action="/handleLogin" method="post">
+                    {% csrf_token %}
+
+                    <div class="inputbx">
+                        <span>Username</span>
+                        <input type="text" name="loginusername" id="loginusername">
+                    </div>
+
+                    <div class="inputbx">
+                        <span>Password</span>
+                        <input type="password" name="loginpassword" id="loginpassword">
+                    </div>
+
+
+
+                    <div class="inputbx">
+                        <input type="submit" value="Sign In">
+                    </div>
+
+                    <div class="inputbx">
+                        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+                    </div>
+
+
+                </form>
+                <hr>
+
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

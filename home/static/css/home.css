@@ -38,10 +38,25 @@ body{
     justify-content: center;
     z-index: 4;
 }
+.norder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: #444343;
+    font-weight: 800;
+    background: #ffffff;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    right: -10px;
+    top: 20px;
+    font-size: 0.9rem;
+}
 
 .navbar button{
-    position: absolute;
-    right: 14%;
+    position:relative;
+    left:19%;
     width: 142px;
     height: 37px;
     background: rgb(209, 0, 42);
@@ -54,6 +69,7 @@ body{
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     letter-spacing: 0.2px;
+    margin-left:1%
 }
 
 .navbar button:focus{
